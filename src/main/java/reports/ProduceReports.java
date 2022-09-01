@@ -14,7 +14,12 @@ public class ProduceReports {
 
         System.out.println("Please enter the relevant ID below:");
         int id = sc.nextInt();
-        sq.queryCustomer(id);
+
+        //Uncomment the method you want to check & comment the ones you don't
+        sq.queryCustomerAddress(id);
+//        sq.queryAccountBalance(id);
+//        sq.queryTransactions(id);
+
 
 
 
