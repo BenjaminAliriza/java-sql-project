@@ -33,7 +33,7 @@ public class SqlTest {
     // Doing this for a single account is enough,
     // and you’re allowed to use the account ID for that account in the query
     @Test
-    public void retrieveTransactionsForAccount_checkTotalBalance_shouldBeZero() throws SQLException {
+    public void retrieveTransactionsForAccount_checkTotalBalance_shouldBeTwenty() throws SQLException {
         SQLQueries sq = new SQLQueries();
 
         String accountNumber=  "SS9902150";

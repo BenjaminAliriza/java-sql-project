@@ -14,7 +14,8 @@ public class SQLQueries {
 
         try (Connection conn = DriverManager.getConnection(this.url, this.user, this.password);
              PreparedStatement ps = conn.prepareStatement(sqlSelectFromCustomers);
-             ResultSet rs = ps.executeQuery()) {
+             ResultSet rs = ps.executeQuery())
+        {
 
             while (rs.next()) {
                 String address = rs.getString("address");
@@ -49,7 +50,8 @@ public class SQLQueries {
 
 
     public void queryTransactions(int ID) throws SQLException {
-        String sqlSelectFromCustomers = "SELECT account.account_num, transactions.date, transactions.amount, transactions.transaction_type  FROM account " +
+        String sqlSelectFromCustomers =
+                "SELECT account.account_num, transactions.date, transactions.amount, transactions.transaction_type  FROM account " +
                 "inner JOIN transactions " +
                 "ON account.account_num = transactions.account_num " +
                 "WHERE account.account_type = 'Cheque' " +
