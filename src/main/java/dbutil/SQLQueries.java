@@ -29,17 +29,16 @@ public class SQLQueries {
     }
 
     public void queryAccountBalance(int ID) throws SQLException {
-        String sqlSelectFromCustomers = "SELECT * FROM account WHERE customer_ID = " + ID;
+        String sqlSelectFromCustomers = "SELECT SUM(current_balance) FROM account WHERE customer_ID = " + ID;
 
         try (Connection conn = DriverManager.getConnection(this.url, this.user, this.password);
              PreparedStatement ps = conn.prepareStatement(sqlSelectFromCustomers);
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
-                String accNumber = rs.getString("account_num");
-                double balance = rs.getDouble("current_balance");
+               double balance = rs.getDouble("current_balance");
 
-                System.out.println("The following balance pertains to account: " + accNumber +
+                System.out.println("The following total balance pertains to ID number:" + ID +
                         "\nBalance: " + balance + "\n");
             }
         } catch (SQLException e) {
@@ -73,7 +72,8 @@ public class SQLQueries {
                 String tType;
                 if (transactionType) {
                     tType = "Withdrawal";
-                } else tType = "Deposit";
+                }
+                else tType = "Deposit";
 
                 System.out.println("\nAccount Number: " + accountNumber +
                         "\nDate: " + date +

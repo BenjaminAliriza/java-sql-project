@@ -9,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SqlTest {
 
-
     // Retrieve the number of customers from the database
     // Check that the total number of customers is equal to 2
     @Test
@@ -17,7 +16,6 @@ public class SqlTest {
         SQLQueries sq = new SQLQueries();
 
         assertEquals(2, sq.queryCustomerCount());
-
     }
 
     // Retrieve all accounts for customer Sarah from the database
@@ -45,7 +43,5 @@ public class SqlTest {
        double balance = totalDeposits + totalWithdrawals;
 
        assertEquals(20, balance, "Balance was not 20");
-
-
     }
 }
