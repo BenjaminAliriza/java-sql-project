@@ -28,24 +28,25 @@ public class SQLQueries {
     }
 
     public void queryAccountBalance(int ID) throws SQLException {
-        String sqlSelectFromCustomers = "SELECT * FROM account WHERE customer_ID = " + ID;
+        String sqlSelectFromCustomers = "SELECT SUM(current_balance) FROM account WHERE customer_ID = " + ID;
 
         try (Connection conn = DriverManager.getConnection(this.url, this.user, this.password);
              PreparedStatement ps = conn.prepareStatement(sqlSelectFromCustomers);
              ResultSet rs = ps.executeQuery()) {
 
-            while (rs.next()) {
-                String accNumber = rs.getString("account_num");
-                double balance = rs.getDouble("current_balance");
 
-                System.out.println("The following balance pertains to account: " + accNumber +
+            while (rs.next()) {
+
+               double balance = rs.getDouble("current_balance");
+
+
+                System.out.println("The following balance pertains to account: " + ID +
                         "\nBalance: " + balance + "\n");
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
     }
-
 
 
     public void queryTransactions(int ID) throws SQLException {
@@ -68,6 +69,7 @@ public class SQLQueries {
                 double amount = rs.getDouble("amount");
                 boolean transactionType = rs.getBoolean("transaction_type");
 
+                //boolean = 0 means false and 1 means true
                 String tType;
                 if (transactionType) {
                     tType = "Withdrawal";
@@ -140,6 +142,7 @@ public class SQLQueries {
         }
         return total;
     }
+
 
     public double queryTotalWithdrawals(String accountNum) throws SQLException {
         String sqlSelectFromCustomers = "SELECT amount FROM transactions WHERE transaction_type = 1 AND account_num = '" + accountNum + "'";
