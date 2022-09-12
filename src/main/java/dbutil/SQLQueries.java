@@ -37,10 +37,10 @@ public class SQLQueries {
 
             while (rs.next()) {
 
-               double balance = rs.getDouble("current_balance");
+               double balance = rs.getDouble("SUM(current_balance)");
 
 
-                System.out.println("The following balance pertains to account: " + ID +
+                System.out.println("The following total balance pertains to customer with ID: " + ID +
                         "\nBalance: " + balance + "\n");
             }
         } catch (SQLException e) {

@@ -16,12 +16,10 @@ public class ProduceReports {
         int id = sc.nextInt();
 
         //Uncomment the method you want to check & comment the ones you don't
+//
 //         sq.queryCustomerAddress(id);
-         sq.queryAccountBalance(id);
-//         sq.queryTransactions(id);
-
-
-
+//         sq.queryAccountBalance(id);
+         sq.queryTransactions(id);
 
     }
 
